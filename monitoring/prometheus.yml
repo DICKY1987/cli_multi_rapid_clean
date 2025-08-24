@@ -1,0 +1,20 @@
+"""
+Prometheus scrape configuration for the Agentic Framework.
+
+This sample configuration scrapes metrics from the FastAPI application
+running on port 8000 as well as a local Redis instance on port 6379.
+Adjust the targets based on your deployment. To enable metrics in your
+application, expose an endpoint (e.g. ``/metrics``) that provides a
+Prometheus compatible output using a library such as ``prometheus_fastapi_instrumentator``.
+"""
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: agentic_app
+    static_configs:
+      - targets: ["localhost:8000"]
+
+  - job_name: redis
+    static_configs:
+      - targets: ["localhost:6379"]

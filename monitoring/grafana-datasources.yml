@@ -1,0 +1,15 @@
+"""
+Grafana data source configuration for Prometheus.
+
+This file defines a single Prometheus data source used by Grafana
+dashboards. When deploying with Docker Compose, mount this file into
+``/etc/grafana/provisioning/datasources``. Adjust the URL if Prometheus
+is running at a different address.
+"""
+apiVersion: 1
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
